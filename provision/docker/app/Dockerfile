@@ -1,7 +1,5 @@
 FROM equipindustry/python:3.8.0-slim
 
-MAINTAINER Luis Mayta <slovacus@gmail.com>
-
 ARG stage
 
 LABEL NAME zsh-core-$stage
@@ -22,6 +20,7 @@ ENV PACKAGES bash \
   wget \
   tar \
   zsh \
+  sudo \
   jq
 
 ENV ZUNIT_VERSION "0.8.2"
@@ -50,7 +49,6 @@ RUN apt-get update -y \
   && su ${USERNAME} \
   && mkdir -p /usr/src \
   && chown -R ${USERNAME} /usr/src \
-
 
 # pipenv
   && pip3 install pipenv \
